@@ -1,0 +1,16 @@
+<h1>Add new User</h1>
+
+<%= form_for @user do |f| %>
+	<%=f.text_field :first_name, placeholder: "Zach" %>
+	<%=f.text_field :last_name, placeholder: "Johnson" %>
+	<%=f.text_field :password, placeholder: "1234567" %>
+	<%=f.text_field :address, placeholder: "1281 E Ridge Meadow Ln" %>
+	<%=f.text_field :city, placeholder: "Midvale" %>
+	<%=f.text_field :state, placeholder: "Utah" %>
+	<%=f.text_field :postal_code, placeholder: "84047" %>
+	<%=f.text_field :email_address, placeholder: "me@me.com" %>
+
+	<%= f.submit "Add User!" %>
+
+
+	<% end %>
