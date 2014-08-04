@@ -3,7 +3,8 @@
 <img src="" alt="">
 
 <ul>
-	<li>Estimated Total Merch Worth:</li>
+	<% @users.each do |u|%>
+	<li><strong>Estimated Total Merch Worth <%= u.first_name %></li>
 	<li>Total Merch cost (price  paid):</li>
 	<li>Estimated Most Valuable Merch:</li>
 	<li>Most Expensive piece of Merch:</li>
@@ -11,4 +12,5 @@
 	<li>Merch not under warranty:</li>
 	<li>Soonest Merch warranty expiration:</li>
 	<li>Merch warranty offers:</li>
+	<% end %>
 </ul>
