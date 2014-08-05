@@ -7,4 +7,6 @@ class Product
   field :product_make, type: String
   field :product_warranty, type: Boolean
   field :product_warranty_length, type: Float
+
+  belongs_to :user
 end

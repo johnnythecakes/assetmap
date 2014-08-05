@@ -8,4 +8,9 @@ class User
   field :state, type: String
   field :postal_code, type: String
   field :email_address, type: String
+
+  has_many :products
+  has_many :categories
+  has_many :subcategories
+  has_many :makes
 end

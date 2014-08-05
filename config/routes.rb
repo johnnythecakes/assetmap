@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :products, :inventories
+  resources :products, only: [:index, :new, :create, :destroy]
 
   get 'users/' => 'users#index'
 
