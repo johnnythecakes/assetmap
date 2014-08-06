@@ -9,6 +9,7 @@ class User
   field :state, type: String
   field :postal_code, type: String
   field :email_address, type: String
+  field :is_active, type: Mongoid::Boolean, default: true
 
   has_secure_password
 

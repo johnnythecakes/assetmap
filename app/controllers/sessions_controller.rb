@@ -8,7 +8,10 @@ class SessionsController < ApplicationController
 		#Find the user that is trying to log in
 		u = User.where(email_address: params[:user][:email_address]).first
 		if u && u.authenticate(params[:user][:password])
-			#Store as a cooke in the user browser as the ID of them,
+			if u.is_active == false
+				redirect_to reactivate_user_path(u.id)
+			end
+			#Store as a cookie in the user browser as the ID of them,
 			#indicating they are logged in
 			session[:user_id] = u.id.to_s
 			redirect_to users_path
@@ -21,4 +24,5 @@ class SessionsController < ApplicationController
 		reset_session
 		redirect_to inventories_path
 	end
+
 end
