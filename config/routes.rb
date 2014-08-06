@@ -1,18 +1,14 @@
 Rails.application.routes.draw do
   resources :products, only: [:index, :new, :create, :destroy]
 
-  get 'users/' => 'users#index'
+  resource :session , only: [:new, :create, :destroy]
 
-  get 'users/new' => 'users#new'
-
+  get 'users/' => 'users#index', as: :users
+  get 'users/new' => 'users#new', as: :new_user
   get 'users/:id' => 'users#show', as: :user
-
   post 'users/' => 'users#create'
-
   get 'users/:id/edit' => 'users#edit'
-
   patch 'users/:id' => 'users#update'
-
   delete 'users/:id' => 'users#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
