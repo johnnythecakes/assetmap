@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :products, only: [:index, :new, :create, :destroy]
+  resources :inventories, only: [:index, :new, :create, :destroy]
 
   resource :session , only: [:new, :create, :destroy]
 
