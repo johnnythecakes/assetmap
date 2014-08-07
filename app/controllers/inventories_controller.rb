@@ -11,7 +11,7 @@ class InventoriesController < ApplicationController
 			return
 		end
 		#@inventories = Inventory.all
-		@inventories = current_user.inventories
+		#@inventories = current_user.inventories
 	end
 
 	def show
@@ -66,6 +66,5 @@ class InventoriesController < ApplicationController
 # 		if current_user || @inventory.user != current_user
 # 			redirect_to home_path
 # 		end
-# 		end
-	end
+#		end
 end

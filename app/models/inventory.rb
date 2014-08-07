@@ -7,7 +7,7 @@ class Inventory
 
   has_many :products
   belongs_to :user
-  has_many :categories
+  #has_many :categories
   #has_many :subcategories
   #has_many :makes
 end

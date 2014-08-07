@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
 	def create
 		@product = Product.new(params.require(:product).permit(:product_name, :product_purchase_price, :product_estimate_price, :product_category_id, :product_make, :product_warranty, :product_warranty_length))
 		if @product.save
-			redirect_to products_path
+			redirect_to inventories_path
 		else
 			render'new'
 		end
