@@ -1,0 +1,15 @@
+<h1>Add New Merch</h1>
+
+<%= form_for @product do |f| %>
+	<%=f.text_field :product_name, placeholder: "Merch Name" %><br />
+	<%=f.text_field :product_purchase_price, placeholder: "Purchase Price" %><br />
+	<%=f.text_field :product_estimate_price, placeholder: "Estimate Price" %><br />
+	<%=f.text_field :product_category_name, placeholder: "Merch Category Name" %><br />
+	<%=f.text_field :product_make, placeholder: "Merch Make" %><br />
+	<%=f.text_field :product_warranty, placeholder: "Does this Merch have a warranty" %><br />
+	<%=f.text_field :product_warranty_length, placeholder: "If yes, how long?" %><br />
+
+	<%= f.submit "Submit Merch" %>
+
+
+	<% end %>

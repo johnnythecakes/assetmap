@@ -30,13 +30,12 @@ class InventoriesController < ApplicationController
 	def create
 		if !current_user
 			redirect_to new_sessions_path
-		return
-			inventory = current_user.inventories(params.require(:inventory).permit(:user_id, :product_id, :quantity, :category_name))
-		if @inventory.save
-			redirect_to inventories_path
-		else
-			render'new'
+			return
 		end
+			inventory = current_user.inventories.new(params.require(:inventory).permit(:user_id, :product_id, :quantity, :category_name))
+			if @inventory.save
+				redirect_to inventories_path
+			end
 	end
 
 	def edit
@@ -53,8 +52,7 @@ class InventoriesController < ApplicationController
 	end
 
 	def destroy
-		@inventory = Inventory.find(params[:id])
-		@inventories.destroy
+		Inventory.find(params[:id]).destroy
 		redirect_to inventories_path
 	end
 
