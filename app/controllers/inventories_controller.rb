@@ -1,5 +1,6 @@
 class InventoriesController < ApplicationController
-	before_action #:get_inventory, :check_security
+	before_action :get_inventory, only: [:show, :edit, :update, :destroy]
+	before_action :check_security, only: [:show, :edit, :update, :destroy]
 	
 	def home
 		@user = User.new
@@ -10,11 +11,12 @@ class InventoriesController < ApplicationController
 			redirect_to home_path
 			return
 		end
-		#@inventories = Inventory.all
+		@inventories = Inventory.all
 		#@inventories = current_user.inventories
 	end
 
 	def show
+		@inventories = current_user.inventories
 		@inventory = Inventory.find(params:[:id])
 	end
 
@@ -56,15 +58,15 @@ class InventoriesController < ApplicationController
 		redirect_to inventories_path
 	end
 
-# private
-# 	def get_inventory
-# 		@inventory = Inventory.find(params[:inventory_id])
-# 	end
+private
+	def get_inventory
+		@inventory = Inventory.find(params[:id])
+	end
 
-# 	def check_security
-# 		# if they're not logged in or they dont ownt this inventory boot them to the home page
-# 		if current_user || @inventory.user != current_user
-# 			redirect_to home_path
-# 		end
-#		end
+	def check_security
+		# if they're not logged in or they dont ownt this inventory boot them to the home page
+		if current_user || @inventory.user != current_user
+			redirect_to home_path
+		end
+		end
 end

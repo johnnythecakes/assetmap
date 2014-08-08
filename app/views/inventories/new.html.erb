@@ -1,0 +1,8 @@
+<h1>Make New Inventory</h1>
+
+<%= form_for @inventory do |f| %>
+	<%= f.text_field :category_name, placeholder: "What Category would this Log fit in?" %>
+	<%= f.collection_select :product_id, Product.all, :id, :product_name %>
+	<%= f.text_field :quantity, placeholder: "Quantity" %>
+	<%= f.submit %>
+<% end %>

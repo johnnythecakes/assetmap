@@ -10,7 +10,7 @@ class Product
 
   #belongs_to :user
   belongs_to :inventory
-  has_many :category
-  has_many :subcategory
-  has_many :make
+  # has_many :category
+  # has_many :subcategory
+  # has_many :make
 end

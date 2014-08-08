@@ -1,22 +1,20 @@
 <h1>Username's Merchlog</h1>
 
-<div class="inventory_home">
-	<h2>Merch Stats</h2>
-	<ul>
-		<li>Merch Count:</li>
-		<li>Merch Estimated Worth:</li>
-		<li>Most Valuable Merch:</li>
-		<li>MerchAlerts:</li>
-	</ul>
-
-	<h4>Merch Categories</h4>
-	<ul>
-		<li>Pull from category model</li>
-	</ul>
-</div>
+<div class="jumbotron">
+	<h1><%= current_user.first_name %> Merch Stats</h1>
+		<p>...</p>
+		<ul>
+			<li>Merch Count:</li>
+			<li>Merch Estimated Worth:</li>
+			<li>Most Valuable Merch:</li>
+			<li>MerchAlerts:</li>
+		</ul>
+		<p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+	</div>
 
 
-<div class="navigation">
+
+<!-- <div class="navigation">
 	<h6>My Merch</h6>
 	<ul>
 		<li>Summary</li>
@@ -29,7 +27,7 @@
 		<li>Fed from category model</li>
 		<li>Sub categories</li>
 	</ul>
-</div>
+</div> -->
 
 <div class="inventory_list">
 	
@@ -46,4 +44,15 @@
   </div>
 </div>
 
-<%= link_to "Add a new Inventory", new_inventory_path if current_user %>
+
+<ul>
+<% @inventories.each do |p| %>
+	<li>
+		<%= link_to p.name, inventory_product_path(p.id) %>
+		<%= button_to "X", decision_path(p.id), method: :delete %>
+	</li>
+<% end %>
+</ul>
+
+
+
