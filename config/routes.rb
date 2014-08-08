@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :inventories, only: [:index, :new, :create, :destroy]
+  resources :inventories, only: [:index, :new, :create, :destroy, :edit] do
     resources :products, only: [:index, :new, :create, :destroy]
+  end
   
   get 'inventories/home' => 'inventories#home', as: :home
   root to: 'inventories#home'
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
   get 'users/new' => 'users#new', as: :new_user
   get 'users/:id' => 'users#show', as: :user
   post 'users/' => 'users#create'
-  get 'users/:id/edit' => 'users#edit'
+  get 'users/:id/edit' => 'users#edit', as: :edit_user
   patch 'users/:id' => 'users#update'
   delete 'users/:id' => 'users#destroy'
 

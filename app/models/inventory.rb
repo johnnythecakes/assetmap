@@ -5,8 +5,8 @@ class Inventory
   field :quantity, type: Float
   field :category_name, type: String
 
-  has_many :products
   belongs_to :user
+  has_many :products
   #has_many :categories
   #has_many :subcategories
   #has_many :makes

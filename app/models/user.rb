@@ -13,8 +13,8 @@ class User
 
   has_secure_password
 
-  has_many :products
-  has_many :categories
-  has_many :subcategories
-  has_many :makes
+  has_many :inventories
+  # has_many :categories
+  # has_many :subcategories
+  # has_many :makes
 end

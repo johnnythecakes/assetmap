@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
+	before_action :get_inventory, :check_security 
 
 	def index
-		@inventory = Inventory.find(params[:inventory_id])
 		@products = @inventory.products
 	end
 
@@ -15,11 +15,11 @@ class ProductsController < ApplicationController
 	end
 
 	def create
-		@inventory = Inventory.find(params[:inventory_id])
 		product = Product.new(params.require(:product).permit(:product_name, :product_purchase_price, :product_estimate_price, :product_category_id, :product_make, :product_warranty, :product_warranty_length))
+		#attach this product to inventory
 		product.inventory = @inventory
 		if product.save
-			redirect_to inventory_products_path(@inventory_id)
+			redirect_to inventory_products_path(@inventory.id)
 		end
 	end
 
@@ -37,9 +37,20 @@ class ProductsController < ApplicationController
 	end
 
 	def destroy
-		@inventory = Inventory.find(params[:inventory_id])
 		Product.find(params[:id]).destroy
-		@products.destroy
 		redirect_to inventory_products_path(@inventory.id)
 	end
+
+private
+
+	def get_inventory
+		@inventory = Inventory.find(params[:id])
+	end
+
+	def check_security
+		# if they're not logged in or they dont ownt this inventory boot them to the home page
+		if current_user || @inventory.user != current_user
+			redirect_to home_path
+		end
+		end
 end
