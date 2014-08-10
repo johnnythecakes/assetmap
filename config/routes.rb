@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :inventories, only: [:index, :new, :create, :destroy, :edit] do
-    resources :products, only: [:index, :new, :create, :destroy]
+    resources :products, only: [:index, :new, :create, :destroy, :show]
   end
   
   get 'inventories/home' => 'inventories#home', as: :home

@@ -17,7 +17,7 @@
  @import 'bootstrap' ;
 
  body {
- 	background: grey;
+ 	background-color: grey;
 
  	.crazy_btn {
  		height:40px;

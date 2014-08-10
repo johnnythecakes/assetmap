@@ -34,7 +34,7 @@ class InventoriesController < ApplicationController
 			return
 		end
 			inventory = current_user.inventories.new(params.require(:inventory).permit(:user_id, :product_id, :quantity, :category_name))
-			if @inventory.save
+			if inventory.save
 				redirect_to inventories_path
 			end
 	end

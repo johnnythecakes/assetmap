@@ -44,12 +44,12 @@ class ProductsController < ApplicationController
 private
 
 	def get_inventory
-		@inventory = Inventory.find(params[:id])
+		@inventory = Inventory.where(:id => params[:inventory_id]).first
 	end
 
 	def check_security
-		# if they're not logged in or they dont ownt this inventory boot them to the home page
-		if current_user || @inventory.user != current_user
+		# if they're not logged in or they dont own this inventory boot them to the home page
+		if (!current_user) || (:inventory_id != current_user)
 			redirect_to home_path
 		end
 		end

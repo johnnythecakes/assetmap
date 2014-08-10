@@ -4,7 +4,7 @@
 	<h1><%= current_user.first_name %> Merch Stats</h1>
 		<p>...</p>
 		<ul>
-			<li>Merch Count:</li>
+			<li>Merch Count: <%= current_user.last_name %> </li>
 			<li>Merch Estimated Worth:</li>
 			<li>Most Valuable Merch:</li>
 			<li>MerchAlerts:</li>
@@ -48,8 +48,7 @@
 <ul>
 <% @inventories.each do |p| %>
 	<li>
-		<%= link_to p.name, inventory_product_path(p.id) %>
-		<%= button_to "X", decision_path(p.id), method: :delete %>
+		<%= link_to "more info", inventory_products_path(p.id) %>
 	</li>
 <% end %>
 </ul>
