@@ -3,8 +3,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :new, :create, :destroy, :show]
   end
   
-  get 'inventories/home' => 'inventories#home', as: :home
-  root to: 'inventories#home'
+  root to: 'inventories#index'
 
   resource :session , only: [:new, :create, :destroy]
   get 'users/:id/reactivate' => 'users#reactivate', as: :reactivate_user

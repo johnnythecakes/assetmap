@@ -21,12 +21,15 @@
 	        <ul class="dropdown-menu" role="menu">
 	        	<% if current_user %>
 	          <li><%= link_to "New Merch", new_inventory_path %></li>
-	          <li><%= link_to "Merch Log", home_path %></li>
+	          <li><%= link_to "Merch Log", inventories_path %></li>
 	          <li><%= link_to "Asset Summary", users_path %></li>
+	          <li><%= link_to "Edit Merch Log", edit_user_path(current_user) %></li>
 	          <li class="divider"></li>
 	          <li><%= link_to "Home", inventories_path %></li>
+	          <% else %>
 	          <li class="divider"></li>
-	          <li><a href="#">One more separated link</a></li>
+	          <%= link_to "Sign up", new_user_path if !@is_signup %>
+	      		<%= link_to "Log in", new_session_path if !@is_login %>
 	          <% end %>
 	        </ul>
 	      </li>
